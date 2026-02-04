@@ -2,7 +2,6 @@ def Kmeans(data, k, iteraciones=10):
     centroides = data[:k]
     
     for _ in range(iteraciones):
-        # Asignar clusters
         clusters = [[] for _ in range(k)]
         for x in data:
             mini = float('inf')
@@ -14,12 +13,10 @@ def Kmeans(data, k, iteraciones=10):
                     ind = i
             clusters[ind].append(x)
         
-        # Recalcular centroides
         new_centroides = []
         for i,group in enumerate(clusters):
             if len(group) == 0:
-                # Si un cluster queda vacío, mantener centroide anterior
-                new_centroides.append(new_centroides[i])  # dataset simple, no debería pasar
+                new_centroides.append(new_centroides[i])  
             else:
                 x_new = sum(p[0] for p in group) / len(group)
                 y_new = sum(p[1] for p in group) / len(group)
