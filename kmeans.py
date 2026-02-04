@@ -16,10 +16,10 @@ def Kmeans(data, k, iteraciones=10):
         
         # Recalcular centroides
         new_centroides = []
-        for group in clusters:
+        for i,group in enumerate(clusters):
             if len(group) == 0:
                 # Si un cluster queda vacío, mantener centroide anterior
-                new_centroides.append([0,0])  # dataset simple, no debería pasar
+                new_centroides.append(new_centroides[i])  # dataset simple, no debería pasar
             else:
                 x_new = sum(p[0] for p in group) / len(group)
                 y_new = sum(p[1] for p in group) / len(group)
